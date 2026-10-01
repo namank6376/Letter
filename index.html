@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Asslisa, I'm Sorry 💕</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --rose: #e8a0b4;
+      --rose-deep: #c76b8a;
+      --blush: #fce4ec;
+      --cream: #fff8f5;
+      --gold: #d4a574;
+      --text: #4a3040;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      min-height: 100dvh;
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(165deg, #fce4ec 0%, #f8bbd9 28%, #f48fb1 62%, #ec407a 100%);
+      background-attachment: scroll;
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    .hearts-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 1.2rem;
+      opacity: 0;
+      animation: float-up linear infinite;
+    }
+
+    @keyframes float-up {
+      0% {
+        transform: translateY(100vh) rotate(0deg) scale(0.5);
+        opacity: 0;
+      }
+      10% { opacity: 0.6; }
+      90% { opacity: 0.4; }
+      100% {
+        transform: translateY(-10vh) rotate(360deg) scale(1);
+        opacity: 0;
+      }
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: max(1.25rem, env(safe-area-inset-top)) 1.15rem max(3rem, env(safe-area-inset-bottom));
+    }
+
+    header {
+      text-align: center;
+      padding: 1.75rem 0 1.5rem;
+      animation: fade-down 1s ease-out;
+    }
+
+    @keyframes fade-down {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .big-heart {
+      font-size: clamp(2.6rem, 10vw, 4rem);
+      display: block;
+      margin-bottom: 0.75rem;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.85rem, 7.2vw, 3.1rem);
+      font-weight: 600;
+      color: var(--text);
+      letter-spacing: 0.02em;
+      line-height: 1.2;
+      word-wrap: break-word;
+    }
+
+    h1 span {
+      display: block;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 0.62em;
+      color: var(--rose-deep);
+      margin-top: 0.35rem;
+    }
+
+    .date-chip {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.45rem 1rem;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--rose-deep);
+      letter-spacing: 0.02em;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 22px;
+      padding: 1.7rem 1.35rem;
+      margin-bottom: 1.15rem;
+      box-shadow: 0 8px 32px rgba(199, 107, 138, 0.15),
+                  0 1px 0 rgba(255, 255, 255, 0.8) inset;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      animation: fade-up 0.8s ease-out backwards;
+    }
+
+    .card:nth-of-type(1) { animation-delay: 0.15s; }
+    .card:nth-of-type(2) { animation-delay: 0.3s; }
+    .card:nth-of-type(3) { animation-delay: 0.45s; }
+    .card:nth-of-type(4) { animation-delay: 0.6s; }
+
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.25rem, 4.5vw, 1.55rem);
+      color: var(--rose-deep);
+      margin-bottom: 0.85rem;
+      font-weight: 600;
+    }
+
+    .card p {
+      font-size: clamp(0.98rem, 3.6vw, 1.05rem);
+      line-height: 1.8;
+      margin-bottom: 0.95rem;
+      overflow-wrap: anywhere;
+    }
+
+    .card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .card .signature {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(1.15rem, 4vw, 1.3rem);
+      color: var(--rose-deep);
+      text-align: right;
+      margin-top: 1.25rem;
+    }
+
+    .reasons {
+      list-style: none;
+      padding: 0;
+    }
+
+    .reasons li {
+      padding: 0.55rem 0 0.55rem 1.7rem;
+      position: relative;
+      font-size: clamp(0.95rem, 3.5vw, 1rem);
+      line-height: 1.65;
+    }
+
+    .reasons li::before {
+      content: '♥';
+      position: absolute;
+      left: 0;
+      color: var(--rose-deep);
+      font-size: 0.85rem;
+    }
+
+    .actions {
+      text-align: center;
+      padding: 0.5rem 0 1.5rem;
+      animation: fade-up 0.8s ease-out 0.8s backwards;
+    }
+
+    .actions > p {
+      margin-bottom: 1.1rem;
+      font-size: clamp(1rem, 3.8vw, 1.08rem);
+      line-height: 1.5;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.95rem 1.6rem;
+      min-height: 48px;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 1.02rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      margin: 0.4rem;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--rose-deep), #ec407a);
+      color: white;
+      box-shadow: 0 4px 20px rgba(199, 107, 138, 0.4);
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus-visible {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 6px 28px rgba(199, 107, 138, 0.5);
+      outline: none;
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.75);
+      color: var(--rose-deep);
+      border: 2px solid var(--rose);
+    }
+
+    .btn-secondary:hover,
+    .btn-secondary:focus-visible {
+      background: white;
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    .response {
+      display: none;
+      text-align: center;
+      padding: 1.4rem 0.4rem 0.6rem;
+      animation: fade-up 0.6s ease-out;
+    }
+
+    .response.show {
+      display: block;
+    }
+
+    .response .emoji {
+      font-size: 3.4rem;
+      margin-bottom: 0.75rem;
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+
+    .response h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.55rem, 6vw, 2rem);
+      color: var(--rose-deep);
+      margin-bottom: 0.5rem;
+    }
+
+    .response p {
+      font-size: clamp(1rem, 3.8vw, 1.08rem);
+      line-height: 1.7;
+    }
+
+    .hidden-message {
+      display: none;
+    }
+
+    .hidden-message.show {
+      display: block;
+      animation: fade-up 0.5s ease-out;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem 0.5rem 0.5rem;
+      font-size: 0.82rem;
+      color: rgba(74, 48, 64, 0.65);
+      animation: fade-up 1s ease-out 1s backwards;
+    }
+
+    @media (min-width: 560px) {
+      .card {
+        padding: 2.35rem 2rem;
+      }
+
+      .btn {
+        width: auto;
+        min-width: 220px;
+        margin: 0.45rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="hearts-bg" id="heartsBg"></div>
+
+  <div class="container">
+    <header>
+      <span class="big-heart">💕</span>
+      <h1>
+        Asslisa, I'm Sorry
+        <span>My Life - My World - My Love - My Everything</span>
+      </h1>
+      <div class="date-chip">Since 26 January 2026 · 8 months of us</div>
+    </header>
+
+    <div class="card">
+      <p>Hey Asslisa,</p>
+      <p>
+        Eight months ago, on <strong>26 January 2026</strong>, a website put your name
+        in front of me — and my whole life quietly changed. I didn't know then that
+        a stranger on a screen would become the person I think about first in the morning
+        and last at night.
+      </p>
+      <p>
+        I got frustrated at you. I let my temper speak louder than my love.
+        You still forgave me — and that kindness is sitting heavy on my chest,
+        because I don't feel like I earned it. I'm still guilty. Every time I replay
+        that moment, I wish I had chosen patience instead of anger.
+      </p>
+      <p>
+        I also feel the distance now. You forgave me with words, but your warmth isn't
+        the same. You're not treating me the way you used to, and it hurts —
+        not because I think I deserve softness after what I did, but because I miss
+        <em>us</em>. I miss the Asslisa who felt close.
+      </p>
+      <p class="signature">— Yours, still hoping</p>
+    </div>
+
+    <div class="card">
+      <h2>What I want you to know</h2>
+      <ul class="reasons">
+        <li>That website was luck. Staying with you is a choice I still want</li>
+        <li>Getting frustrated was my fault — not yours to carry</li>
+        <li>Your forgiveness was a gift. I haven't stopped feeling gunehgaar</li>
+        <li>The coldness between us scares me more than the fight did</li>
+        <li>I don't want pride. I want you, Asslisa — qareeb, not door</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <p>
+        I'm not writing this to make you feel guilty for needing space.
+        You have every right to protect your heart. I'm writing because I am
+        sorry — really sorry — and because I don't want this 8-month story
+        to freeze at the worst chapter.
+      </p>
+      <p>
+        If you're still upset, I understand. If you're testing whether I'll
+        still show up when things feel hard — I will. Just please don't let
+        silence become the only language left between us.
+      </p>
+    </div>
+
+    <div class="actions" id="actions">
+      <p>Asslisa… can we find our way back? 🥺</p>
+      <button class="btn btn-primary" id="yesBtn">Yes. Come closer 💖</button>
+      <button class="btn btn-secondary" id="thinkBtn">I still need a little time</button>
+    </div>
+
+    <div class="response" id="yesResponse">
+      <div class="emoji">🥰</div>
+      <h2>That's all I wanted, Meri Pyari Biwi</h2>
+      <p>
+        Thank you. I will hold my frustration better next time.
+        You already forgave me once — now let me earn the way you used to look at me.
+      </p>
+      <p style="margin-top: 1rem; font-style: italic; color: var(--rose-deep);">
+        Asslisa, forever yours ♥
+      </p>
+    </div>
+
+    <div class="response" id="timeResponse">
+      <div class="emoji">🤍</div>
+      <h2>I'll wait, My CutiePatootie</h2>
+      <p>
+        Take the time you need. I won't rush you, and I won't disappear.
+        When you're ready to treat this like <em>us</em> again, I'll be right here.
+      </p>
+      <p style="margin-top: 1rem;">
+        Whenever your heart feels a little lighter 💕
+      </p>
+      <button class="btn btn-primary" id="laterYesBtn" style="margin-top: 1rem;">
+        Okay… come closer 💕
+      </button>
+    </div>
+
+    <div class="card hidden-message" id="secretCard">
+      <p><strong>One more thing, Asslisa…</strong></p>
+      <p>
+        I made this page the same way we began — through a website —
+        because I keep failing at saying it right in the moment.
+        From 26 January till today, you are still the person I don't want to lose.
+      </p>
+      <p class="signature">I love you, Pumpkin ♥</p>
+    </div>
+
+    <footer>
+      For Asslisa · from 26.01.2026 · made by your bhondu sa ladka
+    </footer>
+  </div>
+
+  <script>
+    const heartsBg = document.getElementById('heartsBg');
+    const heartChars = ['♥', '💕', '💗', '✨', '♡'];
+
+    function createHeart() {
+      const heart = document.createElement('span');
+      heart.className = 'heart';
+      heart.textContent = heartChars[Math.floor(Math.random() * heartChars.length)];
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (6 + Math.random() * 8) + 's';
+      heart.style.animationDelay = Math.random() * 2 + 's';
+      heart.style.fontSize = (0.8 + Math.random() * 1.2) + 'rem';
+      heartsBg.appendChild(heart);
+      setTimeout(() => heart.remove(), 16000);
+    }
+
+    setInterval(createHeart, 700);
+    for (let i = 0; i < 6; i++) createHeart();
+
+    const actions = document.getElementById('actions');
+    const yesResponse = document.getElementById('yesResponse');
+    const timeResponse = document.getElementById('timeResponse');
+    const secretCard = document.getElementById('secretCard');
+
+    function showResponse(el) {
+      actions.style.display = 'none';
+      el.classList.add('show');
+      setTimeout(() => {
+        secretCard.classList.add('show');
+        secretCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 800);
+      burstHearts();
+    }
+
+    function burstHearts() {
+      for (let i = 0; i < 16; i++) {
+        setTimeout(createHeart, i * 100);
+      }
+    }
+
+    document.getElementById('yesBtn').addEventListener('click', () => showResponse(yesResponse));
+    document.getElementById('thinkBtn').addEventListener('click', () => showResponse(timeResponse));
+    document.getElementById('laterYesBtn').addEventListener('click', () => {
+      timeResponse.classList.remove('show');
+      showResponse(yesResponse);
+    });
+  </script>
+</body>
+</html>
